@@ -143,7 +143,7 @@ $(document).ready(function(){
                                 var year = (protoDate.getFullYear(release));
                                 var poster = imageBaseUrl + '/w300' + searchData.results[i].poster_path;
                                 // Just in case no poster is available...
-                                if (poster === 'http://image.tmdb.org/t/p/w300null'){
+                                if (poster === 'https://image.tmdb.org/t/p/w300null'){
                                         poster = placeholderImage;
                                 }
                                 var ratingAvg = searchData.vote_average;
@@ -212,7 +212,7 @@ $(document).ready(function(){
                                 var month = months[protoDate.getMonth(release)];
                                 var year = (protoDate.getFullYear(release));
                                 var poster = imageBaseUrl + '/w300' + nowPlayingData.results[i].poster_path;
-                                if (poster === 'http://image.tmdb.org/t/p/w300null'){
+                                if (poster === 'https://image.tmdb.org/t/p/w300null'){
                                         poster = placeholderImage;
                                 }
                                 var ratingAvg = nowPlayingData.results[i].vote_average;
@@ -287,7 +287,7 @@ $(document).ready(function(){
                                 var month = months[protoDate.getMonth(release)];
                                 var year = (protoDate.getFullYear(release));
                                 var poster = imageBaseUrl + '/w300' + upcomingData.results[i].poster_path;
-                                if (poster === 'http://image.tmdb.org/t/p/w300null'){
+                                if (poster === 'https://image.tmdb.org/t/p/w300null'){
                                         poster = placeholderImage;
                                 }
                                 var ratingAvg = upcomingData.results[i].vote_average;
@@ -387,7 +387,7 @@ $(document).ready(function(){
                                 var month = months[protoDate.getMonth(release)];
                                 var year = (protoDate.getFullYear(release));
                                 var poster = imageBaseUrl + '/w300' + discoverData.results[i].poster_path;
-                                if (poster === 'http://image.tmdb.org/t/p/w300null'){
+                                if (poster === 'https://image.tmdb.org/t/p/w300null'){
                                         poster = placeholderImage;
                                 }
                                 var ratingAvg = discoverData.results[i].vote_average;
@@ -463,7 +463,7 @@ $(document).ready(function(){
                         var month = months[protoDate.getMonth(release)];
                         var year = (protoDate.getFullYear(release));
                         var poster = imageBaseUrl + '/w300' + favoritesData.poster_path;
-                        if (poster === 'http://image.tmdb.org/t/p/w300null'){
+                        if (poster === 'https://image.tmdb.org/t/p/w300null'){
                                 poster = placeholderImage;
                         }
                         var ratingAvg = favoritesData.vote_average;
@@ -536,7 +536,7 @@ function updateModal(thisMovie){
                 var month = months[protoDate.getMonth(release)];
                 var year = protoDate.getFullYear(release);
                 var poster = imageBaseUrl + '/w300' + detailsData.poster_path;
-                if (poster === 'http://image.tmdb.org/t/p/w300null'){
+                if (poster === 'https://image.tmdb.org/t/p/w300null'){
                         poster = placeholderImage;
                 }
                 // Add backdrops to rotate...
@@ -612,7 +612,7 @@ function updateModal(thisMovie){
                         infoHTML += '<span id="trailer-btn" class="btn btn-secondary"><a id="trailer-link" href="#" data-toggle="modal" data-target=".trailer-modal"  data-theVideo="https://www.youtube.com/embed/' + trailerId + '">View the trailer</a></span>';
                         if(protoDate.getTime() > (Date.now() - 3888000000)){
                                 ticketsHTML += '<div class="text-center">';
-                                        ticketsHTML += '<a href="http://www.fandango.com/moviesintheaters" target="_blank" id="tickets-button" class="btn btn-lg btn-primary"> Get Tickets</a>';
+                                        ticketsHTML += '<a href="https://www.fandango.com/moviesintheaters" target="_blank" id="tickets-button" class="btn btn-lg btn-primary"> Get Tickets</a>';
                                 ticketsHTML += '</div>';
                         }
                 infoHTML += '</p>';
@@ -723,7 +723,7 @@ function updateModal(thisMovie){
                                         var month = months[protoDate.getMonth(release)];
                                         var year = (protoDate.getFullYear(release));
                                         var poster = imageBaseUrl + '/w300' + favoritesData.poster_path;
-                                        if (poster === 'http://image.tmdb.org/t/p/w300null'){
+                                        if (poster === 'https://image.tmdb.org/t/p/w300null'){
                                                 poster = placeholderImage;
                                         }
                                         var ratingAvg = favoritesData.vote_average;
