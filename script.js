@@ -1,9 +1,9 @@
 // Javascript and jQuery scripts for Movie Time App
-///////////////////////
+
 // Globals
-///////////////////////
-var apiBaseUrl = 'http://api.themoviedb.org/3';
-var imageBaseUrl = 'http://image.tmdb.org/t/p';
+
+var apiBaseUrl = 'https://api.themoviedb.org/3';
+var imageBaseUrl = 'https://image.tmdb.org/t/p';
 var currentBaseUrl = '';
 var placeholderImage = './placeholder.jpg';
 var currentPage = 1;
@@ -29,9 +29,9 @@ var upcomingHTML = '';
 var discoverHTML = '';
 var favoritesHTML = '';
 
-///////////////////////
+
 // Document Ready (jQuery)
-///////////////////////
+
 $(document).ready(function(){
         // Default to Now Playing search. This is the most popular search.
         var currentFilter = 'popular';
@@ -77,9 +77,9 @@ $(document).ready(function(){
                 searchMovies(searchQuery);
 
         });
-        ///////////////////////
+        
         // Another instance where the user clicks the Now Playing option in the side menu.
-        ///////////////////////
+        
         $('.playing').click(function(){
                 $('.main-menu a p').removeClass('active-browse');
                 $('.playing p').addClass('active-browse');
@@ -89,9 +89,9 @@ $(document).ready(function(){
                 nowPlayingUrl = apiBaseUrl + '/movie/now_playing?api_key=' + apiKey + '&region=US' + '&page=' + currentPage;
                 getNowPlaying();
         });
-        ///////////////////////
+        
         // This handles Infinite Scroll functionality.
-        ///////////////////////
+      
         $(window).scroll(function(){
                 var newCallStart = $(document).height() - $(window).height();
                 var newCallEnd = $(document).height() - $(window).height();
@@ -118,10 +118,10 @@ $(document).ready(function(){
                         }
                 }
         });
-        ///////////////////////
+        
         // The first Main Endpoint of the App.
         // Basic search from the restful API.
-        ///////////////////////
+        
         function searchMovies(searchQuery){
                 currentQuery = "searchMovies";
                 $('.fa-heart').removeClass('active-favorites');
@@ -174,8 +174,7 @@ $(document).ready(function(){
                                                                         break;
                                                                 }
                                                         }
-                                                        // The stars are actually pretty fancy. Custom positioning with 2 divs on top of one another and a dynamic width set to the solid ones.
-                                                        // Add to that an accurate tooltip and the UX works fairly well.
+                                                        //stars
                                                         searchHTML += '<p><span id="overlay-stars">';
                                                                 searchHTML += '<div class="star-ratings"><a href="#" data-toggle="tooltip" data-placement="top" title="' + (ratingAvg * 10) + '%">';
                                                                         searchHTML += '<div class="star-ratings-top" style="width: ' + (ratingAvg * 10) + '%"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>';
@@ -190,11 +189,11 @@ $(document).ready(function(){
                         }
                 });
         };
-        ///////////////////////
+       
         // The rest of the functions are the same basic premise. Just different endpoints and purposes.
-        ///////////////////////
+       
         // Here, the Now Playing includes all current movies in theaters, and I believe that includes art theaters, dollar movies, and limited runs.
-        ///////////////////////
+       
         function getNowPlaying(){
                 currentQuery = "nowPlaying";
                 $('.fa-heart').removeClass('active-favorites');
@@ -254,9 +253,9 @@ $(document).ready(function(){
                         }
                 });
         };
-        ///////////////////////
+    
         // This click listener does the same thing that the one for Now Playing does.
-        ///////////////////////
+       
         $('.upcoming').click(function(){
                 currentPage = 1;
                 $('.main-menu a p').removeClass('active-browse');
@@ -266,9 +265,9 @@ $(document).ready(function(){
                 upcomingBaseUrl = apiBaseUrl + '/movie/upcoming?api_key=' + apiKey + '&region=US' + '&page=' + currentPage;
                 getUpcoming();
         });
-        ///////////////////////
+       
         // Again, the function is basically the same as well. Just pulling unreleased movies within a set date range out from today.
-        ///////////////////////
+       
         function getUpcoming(){
                 currentQuery = "upcoming";
                 $('.fa-heart').removeClass('active-favorites');
@@ -331,10 +330,10 @@ $(document).ready(function(){
                         $('#movie-grid').html(upcomingHTML);
                 });
         };
-        ///////////////////////
+        
         // Here is the basic logic and conditional styling for the sort options and toggles.
         // Each can be sorted ascending, or descending, and can have a priority if active.
-        ///////////////////////
+        
         var sortVar = $('.sortBy.Active').attr('svalD');
         $('.sortBy').click(function(){
                 $('.sortBy').removeClass('Active');
@@ -351,10 +350,8 @@ $(document).ready(function(){
                         $('.sortBy.Active .arrowDown').toggleClass('down');
                 }
         });
-        ///////////////////////
         // With the Discover endpoint, I resused the function for each one of the various genres that can be set.
         // If the genre, (or popular) is clicked, then the special HTML attribute, lval, is passed into the call, along with the current sort value.
-        ///////////////////////
         var discoverUrl = discoverBaseUrl;
         $('.filter').click(function(){
                 currentFilter = $(this).attr('id');
@@ -367,11 +364,8 @@ $(document).ready(function(){
                 discoverBaseUrl = apiBaseUrl + '/discover/movie?api_key=' + apiKey + '&page=' + currentPage;
                 discoverJSON(linkVar,sortVar);
         });
-        ///////////////////////
         // The function itself doesn't change too much, but the variability here is the key.
         // (Obviously, this is a far more efficient way of calling the API and in the future, this is the first pain point I will refactor.
-        // Ugly code that is readable, and works is my MVP.)
-        ///////////////////////
         function discoverJSON(linkVar,sortVar){
                 var discoverUrl = '';
                 $('.fa-heart').removeClass('active-favorites');
@@ -434,16 +428,16 @@ $(document).ready(function(){
                         $('#movie-grid').html(discoverHTML);
                 });
         };
-        ///////////////////////
+        
         // Here is the basic listener for the main menu. Click the tabe and the menu slides into place.
-        ///////////////////////
+        
         $('.main-menu-tab').click(function(){
                 animateMenu();
         });
-        ///////////////////////
+        
         // Also, here is the listener for the favorites button on the top bar.
         // This one is a bit more interesting, since it pulls the array of favorites from local storage first, and then runs a new call for each favorite.
-        ///////////////////////
+       
         $('.favorites-button').click(function(){
                 favoritesHTML = '';
                 currentQuery = 'favorites';
@@ -456,9 +450,9 @@ $(document).ready(function(){
                         showFavorites(favArray[i]);
                 }
         });
-        ///////////////////////
+       
         // The basic function is the same as usual, but it does take the id passed from the favorites array.
-        ///////////////////////
+        
         function showFavorites(favorite){
                 var favoritesUrl = apiBaseUrl + '/movie/' + favorite + '?api_key=' + apiKey;
                 $.getJSON(favoritesUrl, function(favoritesData){
@@ -509,18 +503,18 @@ $(document).ready(function(){
         }
 }); // <==== End of Document ready.
 // I had to play with what worked in an out of the main ready function, but this is currenly working, so good enough for now. Added to ToDo for version 2!
-///////////////////////
+
 // Here is the function to animate the menu. Just fancy css classes.
-///////////////////////
+
 function animateMenu(){
         $('.main-menu').toggleClass('active');
         $('.main-menu-tab').toggleClass('active');
 }
-///////////////////////
+
 // This is the big bad Modal Updater! This thing just gets bigger and bigger as I work on it.
 // It takes the current ID from the clicked movie tile, and runs a full search with additional items appended to it.
 // All this comes back and I grab what I want for the render.
-///////////////////////
+
 function updateModal(thisMovie){
         currentID = 0;
         currentID = $(thisMovie).attr('id');
@@ -660,11 +654,11 @@ function updateModal(thisMovie){
                 $('#movie-rating').html(ratingHTML);
                 $('.tickets').html(ticketsHTML);
                 $('[data-toggle="tooltip"]').tooltip();
-                ///////////////////////
+                
                 // This is the favorite click listener function.
                 // If it is already a favorite, remove the id and save to local storage.
                 // Else, add the append to the array and save that to local storage.
-                ///////////////////////
+              
                 $('#heart').click(function(){
                         $('#heart').toggleClass('fa fa-heart');
                         $('#heart').toggleClass('fa fa-heart-o');
@@ -689,9 +683,9 @@ function updateModal(thisMovie){
                                         }
                                 }
                         }
-                        ///////////////////////
+                        
                         // Helper functions to append or remove the item.
-                        ///////////////////////
+                        
                         function appendToStorage(name, data){
                                 localStorage.setItem(name, old + ',' + data);
                         }
@@ -709,16 +703,16 @@ function updateModal(thisMovie){
                                         var favArr = favString.split(',');
                                         for(let i=0; i<favArr.length; i++){
                                                 updateFavorites(favArr[i]);
-                                                ///////////////////////
+                                                
                                                 // At the end, if you are on the favorites page and you just dropped the favorite, it should be gone immediately.
                                                 // Just a very verbose way to keep nice UX...
-                                                ///////////////////////
+                                                
                                         }
                                 }
                         }
-                        ///////////////////////
+                       
                         // Here is the forced re-render of the favorites page, so there will be no doubt if these need to be updated.
-                        ///////////////////////
+                        
                         function updateFavorites(favorite){
                                 var favoritesUrl = apiBaseUrl + '/movie/' + favorite + '?api_key=' + apiKey;
                                 $.getJSON(favoritesUrl, function(favoritesData){
@@ -768,10 +762,10 @@ function updateModal(thisMovie){
                                 });
                         }
                 });
-                ///////////////////////
+              
                 // Finally, here is the autoplay for the trailer modal. I wanted to autoplay, be available to change settings, or make fullscreen, and still be able to stop on close...
                 // Really tough with the YouTube iFrame API, but it worked in the end!
-                ///////////////////////
+                
                 function autoPlayYouTubeModal(){
                         var trigger = $(".modal-body").find('[data-toggle="modal"]');
                         trigger.click(function() {
@@ -787,7 +781,5 @@ function updateModal(thisMovie){
                 autoPlayYouTubeModal();
         });
 }
-///////////////////////
-// The End
-// Thanks for reading! If you have any comments or suggestions, let me know at andytuttle.io, GitHub, or LinkedIn!
-///////////////////////
+
+
