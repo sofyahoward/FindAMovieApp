@@ -1,0 +1,762 @@
+/* Styles for Movie Time App */
+
+/* Globals */
+* {
+        font-family: 'Cinzel', serif;
+        font-weight: bold;
+}
+
+*:focus{
+        outline-style: none;
+}
+
+body{
+        background-color: #e3ecf9;
+}
+
+/* Basic Layout */
+.top-container{
+        height: 60px;
+}
+
+.container{
+        max-width: 1208px;
+        width: 100%;
+        margin: auto;
+        overflow: hidden;
+        padding: 0px;
+}
+
+#movie-grid{
+        padding: 0;
+}
+
+.row{
+        width: 100%;
+        max-width: 1208px;
+        margin: auto;
+        padding: 0 -2px;
+        overflow: hidden;
+        transition: all 1s;
+}
+
+/* Header Styles */
+#app-title{
+        font-family: 'Cinzel', serif;
+        margin: 10px auto;
+}
+
+#header{
+        position: fixed;
+        width: 100%;
+        padding: 0;
+        max-width: 1206px;
+        z-index: 5;
+        height: 60px;
+        margin: 0 0 60px 0;
+        color: #fff;
+        background-color: #333;
+        -webkit-box-shadow: -2px 29px 30px -2px rgba(0,0,0,0.75);
+        -moz-box-shadow: -2px 29px 30px -2px rgba(0,0,0,0.75);
+        box-shadow: -2px 29px 30px -2px rgba(0,0,0,0.75);
+}
+
+#left-header{
+        float: left;
+        height: 30px;
+        padding: 0;
+}
+
+#right-header{
+        float: right;
+        height: 50px;
+        margin-top: 12px;
+        display: inline-block;
+}
+
+/* Favorites Button */
+div.favorites-button{
+        display: inline;
+        margin-left: 20px;
+}
+
+/* Search Bar */
+div.search-area{
+        display: inline;
+        width: 90%;
+        height: auto;
+}
+
+.fa-search:hover, .fa-search:active{
+        color: gold;
+}
+
+.search-form{
+        height: auto;
+        width: auto;
+        margin: 0 auto;
+        display: inline;
+}
+
+.search-field{
+        border: none;
+        border-radius: 15px;
+        padding: 0 10px;
+        line-height: 20px;
+        font-size: 20px;
+        color: #000;
+        margin-right: 10px;
+        width: 0;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: width opacity transform 1s;
+}
+
+.search-field.active-search{
+        transition: all 1s;
+        width: 50%;
+        opacity: 1;
+        transform: translateX(-10px);
+}
+
+.search-field.hidden-search{
+        transition: all 1s;
+        width: 0%;
+        opacity: 0;
+        transform: translateX(10px);
+}
+
+.fa-times-circle.fa-lg{
+        position: relative;
+        z-index: 2;
+        margin:0px 30px 0px -50px;
+        color: red;
+        vertical-align: 0%;
+}
+
+.hidden{
+        display: none;
+}
+
+.search-button{
+        background-color: transparent;
+        border: none;
+}
+
+/* Slide-Out Menu */
+.main-menu{
+        overflow-y: visible;
+        background-color: #333;
+        color: #fff;
+        position: fixed;
+        z-index: 2;
+        height: 100vh;
+        width: 300px;
+        margin: 0 2px 0 -250px;
+        padding: 20px 20px 0;
+        opacity: 0;
+        transition: all 1s;
+}
+
+#top-menu{
+        height: 58%;
+        width: 100%;
+        overflow-y: scroll;
+        position: relative;
+        margin-bottom: 50px;
+}
+
+.active{
+        display: block;
+        transform: translateX(250px);
+        opacity: 1;
+}
+
+.main-menu-tab{
+        position: fixed;
+        background-color: #333;
+        z-index: 3;
+        border: 1px solid #555;
+        border-radius: 0 5px 5px 0;
+        font-family: arial;
+        font-size: 30px;
+        font-weight: 100;
+        color: #888;
+        width: 25px;
+        height: 60px;
+        word-spacing: 0;
+        letter-spacing: -2px;
+        line-height: 0px;
+        padding: 30px 0 35px;
+        margin: 40vh 0px 40vh 0px;
+        transition: all 1s;
+}
+
+.main-menu-tab:hover{
+        background-color: #999;
+        cursor: pointer;
+}
+
+.main-menu p:hover{
+        background-color: #337ab7;
+        cursor: pointer;
+        color: #fff;
+        border-radius: 5px;
+}
+
+.main-menu h4{
+        font-family: 'Passion One';
+        font-size: 20px;
+}
+
+.main-menu a{
+        box-sizing: border-box;
+        text-decoration: none;
+        color: #fff;
+}
+
+.main-menu a:hover{
+        color: #fff;
+        text-decoration: none;
+        font-weight: bolder;
+}
+
+.active-browse{
+        background-color: #337ab7;
+        color: #fff;
+        border-radius: 5px;
+}
+
+.main-menu p{
+        padding: 2px 0 2px 10px;
+}
+
+#top-menu::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 4px;
+    opacity: .2;
+}
+
+#top-menu::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+}
+
+#top-menu::-webkit-scrollbar-thumb {
+        background-color: #444;
+        width: 4px;
+        opacity: .2;
+        outline: 1px solid slategrey;
+        border-radius: 4px;
+}
+
+#bottom-menu{
+        position: fixed;
+        width: 100%;
+        padding: 0 10px;
+        margin-left: -20px;
+        bottom: 0;
+        background-color: #333;
+}
+
+/* Sort items */
+#sorts{
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+        margin-bottom: 70px;
+}
+
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
+        outline-style: none;
+}
+
+.arrowDown, .arrowUp{
+        font-size: .5em;
+}
+
+.arrowUp{
+        display: none;
+}
+
+.up{
+        display: inline;
+}
+
+.down{
+        display: none;
+}
+
+#sorts .Active{
+        background-image: linear-gradient(to bottom,#135a97 0,#063a68 100%);
+}
+
+/* Grid Styles */
+.movie-grid{
+        margin: 0px;
+        height: 100%;
+        width: auto;
+}
+
+.movie-item{
+        padding: 0;
+        /* width: auto; */
+        height: auto;
+        min-height: 450px;
+        margin: 2px 2px 2px 0px;
+        background-size: cover;
+        background-color: #111;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+}
+
+.movie-item{
+        -webkit-animation: popin 400ms;
+    -moz-animation: popin 400ms;
+    -ms-animation: popin 400ms;
+    animation: popin 400ms;
+}
+
+@keyframes popin {
+    from {transform: scale(0);}
+    to   {transform: scale(1);}
+}
+
+@-moz-keyframes popin {
+    from { height: 0; width: 0; }
+    to   { height: 450px; width: 300px; }
+}
+
+@-webkit-keyframes popin {
+    from { height: 0; width: 0; }
+    to   { height: 450px; width: 300px; }
+}
+
+@-ms-keyframes popin {
+    from { height: 0; width: 0; }
+    to   { height: 450px; width: 300px; }
+}
+
+/* Card Overlay Specific */
+.overlay{
+        position: absolute;
+        margin-top: -450px;
+        background:rgba(227,236,249, .8);
+        text-align:center;
+        height: 100vh;
+        width: 300px;
+        opacity:0;
+   -webkit-transition: opacity .5s ease;
+   z-index: 2;
+}
+
+.movie-item:hover .overlay{
+        opacity: 1;
+}
+
+.movie-item:hover .overlay .movie-title{
+        opacity: 1;
+}
+
+.overlay #details{
+        width: 100%;
+        height: auto;
+        margin: 100px auto;
+        position: relative;
+        z-index: 99;
+}
+
+#details #overlay-heart .fa{
+        transition: all .2s;
+        font-weight: bold;
+        position: relative;
+        z-index: 999;
+        color: red;
+        opacity: 1;
+}
+
+#details .star-ratings{
+        font-size: 30px;
+        width: 150px;
+        opacity: 1;
+}
+
+#details .star-ratings span{
+        width: 30px;
+}
+
+#details .star-ratings-bottom{
+        width: 150px;
+}
+
+.movie-title{
+        color: #000;
+        margin-top: 90px;
+        font-weight: 500;
+        font-family: 'Passion One';
+}
+
+.movie-item:hover .overlay .movie-rating{
+        opacity: 1;
+        margin: 200px auto 20px 80px;
+}
+
+/* Trailer Modal Styles */
+.trailer-modal .modal-dialog{
+        width: 100vw;
+        height: 100%;
+        margin: auto;
+        background-color: transparent;
+        border-radius: 0px;
+        color: #fff;
+        opacity: 1;
+        overflow: hidden;
+}
+
+#trailer-content{
+        width: 100%;
+        height: 95%;
+}
+
+/* Main Modal Styles */
+.movie-modal .modal-dialog{
+        width: 100%;
+        max-width: 1208px;
+        height: 100%;
+        margin: 60px auto 0px;
+        background-color: transparent;
+        border-radius: 0px;
+        color: #fff;
+        opacity: 1;
+        overflow: hidden;
+}
+
+.modal-content, .modal-body{
+        height: 100vh;
+        border-radius: 0px;
+        background-color: rgba(0, 0, 0,.4);
+        background-image: url('');
+        color: #fff;
+}
+
+.modal-body span, .modal-body button{
+        color: #fff;
+        font-size: 26px;
+}
+
+/* Poster and Images */
+.modal-body #movie-poster{
+        height: 600px;
+        width: ;
+        margin: -30px 20px 20px -10px;
+}
+
+#movie-poster img{
+        height: 100%;
+        margin-left: -10px;
+        border: 4px solid #333;
+}
+
+#main-content{
+        height: 100vh;
+        position: absolute;
+}
+
+#main-content img{
+        position: absolute;
+        margin: -20px 0 0 -16px;
+        width: 1208px;
+        opacity: 0;
+    -webkit-animation: fadein 10s;
+    -moz-animation: fadein 10s;
+    -ms-animation: fadein 10s;
+    animation: fadein 10s;
+}
+
+@keyframes fadein {
+    0% { opacity: 0; }
+    50% { opacity: .6; }
+    100% { opacity: 0; }
+}
+
+@-moz-keyframes fadein {
+    0% { opacity: 0; }
+    50% { opacity: .6; }
+    100%  { opacity: 0; }
+}
+
+@-webkit-keyframes fadein {
+    0% { opacity: 0; }
+    50% { opacity: .6; }
+    100%  { opacity: 0; }
+}
+
+@-ms-keyframes fadein {
+    0% { opacity: 0; }
+    50% { opacity: .6; }
+    100%  { opacity: 0; }
+}
+
+/* Title and basic info styles */
+.modal-movie-title{
+        color: #fff;
+        margin: 100px 20px 20px 100px;
+}
+
+.modal-movie-title #title-text{
+        font-size: 42px;
+        font-family: 'Passion One';
+}
+
+#mpaaRating{
+        display: inline;
+        line-height: 30px;
+        font-size: 30px;
+        color: #fff;
+        border: 4px solid #fff;
+        padding: 0 5px;
+        font-family: 'Merriweather-black';
+        font-stretch: ultra-expanded;
+        font-weight: 900;
+}
+
+.modal-movie-title #desc{
+        font-size: 20px;
+        font-weight: bold;
+}
+
+.modal-movie-title span{
+        font-size: 18px;
+        color: #eaeaea;
+}
+
+.modal-movie-title #release-date{
+        font-size: 16px;
+}
+
+#desc{
+        box-sizing: border-box;
+        max-height: 250px;
+        padding: 5px;
+        overflow-y: scroll;
+        -webkit-scrollbar: hidden;
+}
+
+/* More Details Styles */
+#web-site{
+        font-size: 16px;
+        margin-left: 110px;
+}
+
+#web-site a{
+        color: #fff;
+}
+
+#trailer{
+        clear: left;
+        float: left;
+        text-align: center;
+}
+
+#trailer-btn{
+        width: auto;
+        height: 30px;
+        font-size: 16px;
+        line-height: 16px;
+        margin: auto;
+        margin-top: 10px;
+        margin-left: 102px;
+        text-align: center;
+        background-color: #ddd;
+}
+
+#trailer-btn a {
+        color: #222;
+        text-decoration: none;
+}
+
+#trailer-btn a:focus{
+        outline-style: none;
+}
+
+/* Ratings and Favorites Styles */
+#movie-rating{
+        float: right;
+        margin-right: 110px;
+        font-size: 18px;
+}
+
+#heart{
+        transition: all .2s;
+        font-weight: bold;
+}
+
+#heart:hover{
+        transition: all .2s;
+        color: red;
+}
+
+.fa-heart-o{
+        transition: all .2s;
+        color: #fff;
+}
+
+.fa-heart{
+        transition: all .2s;
+        color: #fff;
+        transform: scale(1);
+}
+
+.fa-heart:hover{
+        transition: all .2s;
+        color: red;
+}
+
+.active-favorites{
+        transition: all .4s;
+        color: red;
+        transform: scale(1.4);
+}
+
+#stars{
+        width: 530px;
+        font-size: 20px;
+        cursor: default;
+}
+
+.star-ratings{
+        unicode-bidi: bidi-override;
+        font-size: 20px;
+        font-weight: bold;
+        height: 30px;
+        width: 117px;
+        position: relative;
+        padding: 0;
+        margin-bottom: -4px;
+        display: inline-block;
+}
+
+.star-ratings-top{
+    padding: 0;
+    position: absolute;
+    z-index: 2;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+
+}
+
+.star-ratings-top span{
+        color: gold;
+}
+
+.star-ratings-bottom{
+        position: absolute;
+    padding: 0;
+    display: block;
+    z-index: 0;
+}
+
+/* Ticket Styles */
+.tickets{
+        float: left;
+        clear: left;
+}
+
+#tickets-button{
+        margin-left: -70px;
+        margin-bottom: 10px;
+}
+
+/* Ratings ToolTip */
+.tooltip.top .tooltip-arrow {
+        bottom: 0;
+        left: 50%;
+        margin-left: 60px;
+        border-top-color: #333;
+        border-width: 5px 5px 0;
+}
+
+.tooltip-inner {
+        background-color: #333;
+        margin-right: -130px;
+        border: solid 1px #333;
+}
+
+/* Mobile Media Query */
+@media only screen and (max-width: 499px) {
+        .App{
+                width: 100vw;
+                height: 100vh;
+                font-size: 3em;
+        }
+        .movie-item{
+                float: right;
+                width: 49.5%;
+                min-width: 300px;
+        }
+        .main-menu{
+                font-size: 2em;
+                width: 50%;
+        }
+        .main-menu-tab{
+                width: 10%;
+                height: 24%;
+                font-size: 50px;
+                padding: 50px 0 35px;
+                word-spacing: 0;
+                letter-spacing: -2px;
+        }
+        .active{
+                display: block;
+                transform: translateX(290px);
+        }
+}
+
+/* Tablet Media Query */
+@media only screen and (min-width: 500px) and (max-width: 999px) {
+        .App{
+                width: 80vw;
+                height: 100vh;
+                font-size: 3em;
+        }
+        .movie-item{
+                float: right;
+                width: 33.1%;
+                min-width: 300px;
+        }
+        .main-menu{
+                font-size: 2em;
+                width: 30%;
+        }
+        .main-menu-tab{
+                width: 50px;
+                height: 120px;
+                font-size: 60px;
+                padding: 50px 0 35px;
+                word-spacing: 0;
+                letter-spacing: -2px;
+        }
+        .main-menu-tab.active{
+                display: block;
+                transform: translateX(290px);
+        }
+}
+
+/* Desktop Media Query  */
+@media only screen and (min-width: 1000px) {
+        .App{
+                width: 70vw;
+                height: 100vh;
+        }
+        .main-menu-tab{
+                width: 25px;
+                height: 60px;
+        }
+        .movie-item{
+                float: right;
+                width: 300px;
+
+        }
+}
