@@ -1,0 +1,131 @@
+<!-- Basic Markup and CDN imports for Movie Time App -->
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Find a Movie</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="config.js" type="text/javascript"></script>
+        <script src="https://use.fontawesome.com/0af11c741d.js"></script>
+        <script src="script.js" type="text/javascript"></script>
+</head>
+<body>
+        <div className="container App">
+                <div class="container top-container">
+                        <div class="row">
+                                <!-- Top header bar -->
+                                <div id="header" class="col-xs-12 text-center">
+                                        <div id="left-header" class="col-xs-0 col-sm-4"></div>
+                                        <div id="center-header" class="col-xs-6 col-sm-4">
+                                                <h1 id="app-title">Find A Movie</h1>
+                                        </div>
+                                        <div id="right-header" class="col-xs-6 col-sm-4">
+                                        <!-- Search bar and button -->
+                                                <div class="search-area text-center">
+                                                        <form class="search-form">
+                                                                <input type="text" class="search-field hidden-search" />
+                                                                <i class="fa fa-lg fa-times-circle hidden" aria-hidden="true"></i>
+                                                                <button type="submit" class="search-button" ><i class="fa fa-2x fa-search" type="submit" aria-hidden="true"></i></button>
+                                                        </form>
+                                                </div>
+                                                <!-- Favorites page button -->
+                                                <div class="favorites-button text-center">
+                                                        <i class="fa fa-2x fa-heart" aria-hidden="true"></i>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="container">
+                        <div class="row">
+                                <!-- Browse Options -->
+                                <div class="main-menu">
+                                        <h4>Select a Category</h4>
+                                        <a href="#" class="filter" id="popular" lval=""><p>Popular</p></a>
+                                        <a href="#" class="playing"><p>Now Playing</p></a>
+                                        <a href="#" class="upcoming"><p>Upcoming</p></a>
+                                        <hr/>
+                                        <div id="top-menu">
+                                                <a href="#" class="filter" id="action" lval="&with_genres=28"><p>Action</p></a>
+                                                <a href="#" class="filter" id="adventure" lval="&with_genres=12"><p>Adventure</p></a>
+                                                <a href="#" class="filter" id="animation" lval="&with_genres=16"><p>Animation</p></a>
+                                                <a href="#" class="filter" id="comedy" lval="&with_genres=35"><p>Comedy</p></a>
+                                                <a href="#" class="filter" id="crime" lval="&with_genres=80"><p>Crime</p></a>
+                                                <a href="#" class="filter" id="documentary" lval="&with_genres=99"><p>Documentary</p></a>
+                                                <a href="#" class="filter" id="drama" lval="&with_genres=18"><p>Drama</p></a>
+                                                <a href="#" class="filter" id="family" lval="&with_genres=10751"><p>Family</p></a>
+                                                <a href="#" class="filter" id="fantasy" lval="&with_genres=14"><p>Fanasy</p></a>
+                                                <a href="#" class="filter" id="history" lval="&with_genres=36"><p>History</p></a>
+                                                <a href="#" class="filter" id="horror" lval="&with_genres=27"><p>Horror</p></a>
+                                                <a href="#" class="filter" id="music" lval="&with_genres=10402"><p>Music</p></a>
+                                                <a href="#" class="filter" id="mystery" lval="&with_genres=9648"><p>Mystery</p></a>
+                                                <a href="#" class="filter" id="romance" lval="&with_genres=10749"><p>Romance</p></a>
+                                                <a href="#" class="filter" id="science fiction" lval="&with_genres=878"><p>Science Fiction</p></a>
+                                                <a href="#" class="filter" id="tvmovie" lval="&with_genres=10770"><p>TV Movie</p></a>
+                                                <a href="#" class="filter" id="thriller" lval="&with_genres=53"><p>Thriller</p></a>
+                                                <a href="#" class="filter" id="war" lval="&with_genres=10752"><p>War</p></a>
+                                                <a href="#" class="filter" id="western" lval="&with_genres=37"><p>Western</p></a>
+                                        </div>
+                                        <div id="bottom-menu">
+                                                <hr/>
+                                                <!-- Sort Options -->
+                                                <h4>Sort By:</h4>
+                                                <div id="sorts" class="btn-group">
+                                                        <button type="button" up="true" svalD="&sort_by=popularity.desc" svalA="&sort_by=popularity.asc" class="btn btn-primary sortBy Active sortPop">Popularity<span class="arrowDown"> &#9660;</span><span class="arrowUp"> &#9650;</span></button>
+                                                        <button type="button" up="true" svalD="&sort_by=release_date.desc" svalA="&sort_by=release_date.asc" class="btn btn-primary sortBy sortDate">Date<span class="arrowDown"> &#9660;</span><span class="arrowUp"> &#9650;</span></button>
+                                                        <button type="button" up="true" svalD="&sort_by=original_title.desc" svalA="&sort_by=original_title.asc" class="btn btn-primary sortBy sortTitle">Title<span class="arrowDown"> &#9660;</span><span class="arrowUp"> &#9650;</span></button>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="main-menu-tab">
+                                        |||
+                                </div>
+                                <div id="movie-grid" class="col-xs-12">
+                                </div>
+                        </div>
+                </div>
+                <!-- Movie Modal -->
+                <div class="modal fade movie-modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                        <div class="modal-body">
+                                                <div id="main-content"></div>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span><i class="fa fa-2x fa-times-circle-o" aria-hidden="true"></i></span></button>
+                                                <div id="movie-poster" class="col-sm-4"></div>
+                                                <div class="modal-movie-title col-sm-6">
+                                                        <h1 id="title-text"></h1>
+                                                        <p id="desc"></p>
+                                                        <p id="release-date"><p>
+                                                                <span id="run-time"></span>
+                                                                <span id="modal-genre"></span>
+                                                        </p>
+                                                </div>
+                                                <div class="more-info col-xs-12 ">
+                                                        <div class="tickets col-xs-6"></div>
+                                                        <div id="trailer" class="col-xs-4"></div>
+                                                        <div id="movie-rating">
+                                                                <p><span id="stars"></span> <span id="heart"></span></p>
+                                                        </div>
+                                                </div>
+                                </div>
+                                </div>
+                        </div>
+                </div>
+                <!-- Trailer Modal -->
+                <div class="modal fade trailer-modal" tabindex="-2" role="dialog">
+                        <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                        <div class="modal-body">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span><i class="fa fa-2x fa-times-circle-o" aria-hidden="true"></i></span></button>
+                                                <div id="trailer-content"></div>
+                                </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</body>
+</html>
