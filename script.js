@@ -2,8 +2,8 @@
 ///////////////////////
 // Globals
 ///////////////////////
-var apiBaseUrl = 'http://api.themoviedb.org/3';
-var imageBaseUrl = 'http://image.tmdb.org/t/p';
+var apiBaseUrl = 'https://api.themoviedb.org/3';
+var imageBaseUrl = 'https://image.tmdb.org/t/p';
 var currentBaseUrl = '';
 var placeholderImage = './placeholder.jpg';
 var currentPage = 1;
