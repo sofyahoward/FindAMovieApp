@@ -2,8 +2,8 @@
 
 // Globals
 
-var apiBaseUrl = 'https://cors-anywhere.herokuapp.com/http://api.themoviedb.org/3';
-var imageBaseUrl = 'https://cors-anywhere.herokuapp.com/http://image.tmdb.org/t/p';
+var apiBaseUrl = 'http://api.themoviedb.org/3';
+var imageBaseUrl = 'http://image.tmdb.org/t/p';
 var currentBaseUrl = '';
 var placeholderImage = './placeholder.jpg';
 var currentPage = 1;
